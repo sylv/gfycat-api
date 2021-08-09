@@ -1,6 +1,6 @@
 {
   "name": "gfycat-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": "https://github.com/sylv/gfycat-api.git",
   "author": "Ryan <ryan@sylver.me>",
   "license": "MIT",
@@ -8,6 +8,17 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "dist/index.d.ts",
+  "keywords": [
+    "gfycat",
+    "redgifs",
+    "red gifs",
+    "api",
+    "nsfw",
+    "gif",
+    "video",
+    "mp4",
+    "porn"
+  ],
   "files": [
     "dist",
     "src"
