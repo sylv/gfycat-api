@@ -49,3 +49,7 @@ console.log(post);
 //   }
 // }
 ```
+
+# todo
+
+- [ ] Some posts have URLs that outright don't work, we should try filter these out. An example is [this post](https://api.gfycat.com/v1/gfycats/AnchoredGlaringArmadillo) where the "largeGif" source doesn't work. This seems to be random and isn't just restricted to urls in `content_urls`, but the website must filter them out somehow so it should be possible for us to do the same. 

@@ -11,6 +11,7 @@ export interface GfycatPost {
   tags?: string[];
   nsfw?: boolean;
   md5?: string;
+  slug?: string;
   createdAt: Date;
   author?: GfycatUser;
   sources: GfycatSource[];

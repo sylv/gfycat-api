@@ -30,7 +30,7 @@ export class API {
   }
 
   private formatPost(post: GfycatAPIItem): GfycatPost {
-    return {
+    const data: GfycatPost = {
       id: post.gfyName,
       title: post.title,
       source: post.url,
@@ -40,6 +40,7 @@ export class API {
       tags: this.formatPostTags(post.tags),
       nsfw: this.isNSFWPost(post),
       md5: post.md5,
+      slug: post.gfySlug,
       createdAt: new Date(post.createDate * 1000),
       author: post.userData && !Array.isArray(post.userData) ? this.formatUser(post.userData) : undefined,
       sources: this.getPostSources(post),
@@ -59,6 +60,29 @@ export class API {
         width: post.width,
       },
     };
+
+    const otherSources = ["webm", "mp4", "gif"] as const;
+    for (const source of otherSources) {
+      if (post.content_urls[source]) {
+        // this type already exists in data.sources, so we don't
+        // need to add it from other urls.
+        continue;
+      }
+
+      const url = post[`${source}Url` as const];
+      const size = post[`${source}Size` as const];
+      if (url && size) {
+        data.sources.push({
+          type: source,
+          url: url,
+          size: size,
+          height: post.height,
+          width: post.width,
+        });
+      }
+    }
+
+    return data;
   }
 
   private formatPostTags(tags?: string[]): string[] | undefined {

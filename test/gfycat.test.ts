@@ -45,3 +45,9 @@ it.concurrent("should play nice with pagination", async () => {
   expect(next.cursor).not.toEqual(first.cursor);
   expect(first.results[0].id).not.toEqual(next.results[0].id);
 });
+
+it.concurrent("should add mp4 url to sources when it doesnt already exist", async () => {
+  const id = "AnchoredGlaringArmadillo";
+  const post = await gfycat.getPost(id);
+  expect(post.sources.find((source) => source.type === "mp4")).toBeDefined();
+});

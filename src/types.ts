@@ -36,6 +36,7 @@ export interface GfycatAPIItem {
   gatekeeper: number;
   geoWhitelist: any[];
   gifUrl: string;
+  gifSize?: number;
   hasAudio: boolean;
   hasTransparency: boolean;
   languageCategories: string[];
